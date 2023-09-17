@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin&family=Staatliches&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">    
+
+    <title>Space Cream - Menu</title>
+
+</head>
+<body>
+    
+    <header>
+        <img src="{{ url_for('static',filename='imgs/logo 1.png') }}" alt="Desenho de um círculo e dentro uma casquinha de sorvete com uma bola de cor lilás">
+        <div class="title">
+            <h1>Space cream</h1>
+        </div>
+    </header>
+
+    <main>
+        <p>Menu</p>
+    </main>
+
+    <div id="menu">
+        <div class="row-sorvete">
+            {%for sorvete in sorvetes %}
+                <div class="card-sorvete">
+                    <img src = {{sorvete.url_img}}>
+                    <button class="comprar">Comprar</button>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+    
+</body>
+</html>

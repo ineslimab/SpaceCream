@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS categoria;
+DROP TABLE IF EXISTS sorvetes;
+
+
+CREATE TABLE IF NOT EXISTS categoria (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT NOT NULL,
+    url_img VARCHAR(255) NOT NULL,
+    dt_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS sorvetes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT NOT NULL,
+    quantidade TINYINT NOT NULL,
+    preco NUMERIC(10,2) NOT NULL,
+    url_img VARCHAR(255) NOT NULL,
+    id_categoria INT NOT NULL,
+    dt_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB;
+
+ALTER TABLE sorvetes ADD CONSTRAINT fk_id_categoria
+FOREIGN KEY(id_categoria) REFERENCES categoria(id);

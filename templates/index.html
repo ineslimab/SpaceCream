@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+
+    <title>Space Cream</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static',filename='imgs/logo 1.png') }}" alt="Desenho de um círculo e dentro uma casquinha de sorvete com uma bola de cor lilás">
+        <div class="title">
+            <h1>Space cream</h1>
+        </div>
+    </header>
+    <main>
+
+        <p>
+            Quem é que não quer um sorvetinho nesse calor, hein? </br>
+            Não passe aperto, venha se refrescar aqui com a gente e
+            conheça os nossos sabores exclusivos! Eu tenho certeza 
+            que você nunca provou nada igual!
+        </p>
+
+        <div id="vitrine">
+            {%for categoria in categorias %}
+                <div class="card">
+                    <div id="info"> 
+                        <h2>
+                            <a href={{ url_for('sorvetes_por_categoria', id_categoria=categoria.id) }}>
+                                {{categoria.nome}}
+                            </a>
+                        </h2>
+                    </div>
+                    <img src = {{categoria.url_img}}>
+                </div>
+            {%endfor%}
+        </div>
+    </main>
+</body>
+</html>
