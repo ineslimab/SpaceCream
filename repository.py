@@ -3,7 +3,6 @@ import pymysql
 from config import mysql
 
 def get_sorvetes_by_categoria(id_categoria):
-    print(id_categoria)
     return execute("SELECT * FROM sorvetes WHERE id_categoria = %s", (id_categoria), fetch_all)
 
 def get_categorias():

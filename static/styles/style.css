@@ -82,9 +82,9 @@ main{
     padding: 5.4rem 11.6rem;
 }
 
-main p{
-margin: auto 0rem 1rem;
-text-align: center;
+main h2{
+    margin: auto 0rem 1rem;
+    text-align: center;
 }
 
 #vitrine{
@@ -108,9 +108,6 @@ text-align: center;
     animation: topdown 700ms;
 }
 
-.card:hover{
-    transform: scale(1.02);
-}
 
 .card h2{
     font-family: var(--ff-heading);
@@ -173,10 +170,13 @@ button.comprar{
     text-decoration: none;
 }
 
-.card-sorvete:hover{
-    transform: scale(1.02);
+button.comprar:hover{
+    cursor: pointer
 }
 
+.comprar .acao{
+    display: none;
+}
 @keyframes topdown {
     0%{
         opacity: 0;

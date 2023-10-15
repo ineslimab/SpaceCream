@@ -15,6 +15,39 @@
 
     <title>Space Cream - Menu</title>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function(e) {
+            const listaBotaoComprar = document.getElementsByClassName("comprar");
+            
+            for (let i = 0; i < listaBotaoComprar.length; i++) {
+                const botaoComprar = listaBotaoComprar[i]
+
+                botaoComprar.addEventListener(
+                    "mouseenter",
+                    (event) => {
+                        const textoAcao = event.target.firstElementChild;
+                        const textoPreco = event.target.lastElementChild;
+                        textoAcao.style.display = "block";
+                        textoPreco.style.display = "none";
+                    },
+                    false,
+                );
+
+                botaoComprar.addEventListener(
+                    "mouseleave",
+                    (event) => {
+                        const textoAcao = event.target.firstElementChild;
+                        const textoPreco = event.target.lastElementChild;
+                        textoAcao.style.display = "none";
+                        textoPreco.style.display = "block";
+                    },
+                    false,
+                );
+            }
+        });
+    </script>
+
+
 </head>
 <body>
     
@@ -26,15 +59,19 @@
     </header>
 
     <main>
-        <p>Menu</p>
+        <h2>Menu</h2>
     </main>
 
     <div id="menu">
         <div class="row-sorvete">
             {%for sorvete in sorvetes %}
                 <div class="card-sorvete">
+                    <p class="titulo">{{sorvete.nome}}</p>
                     <img src = {{sorvete.url_img}}>
-                    <button class="comprar">Comprar</button>
+                    <button class="comprar">
+                        <spam class="acao">Comprar</spam>
+                        <spam class="preco">R${{sorvete.preco}}</spam>
+                    </button>
                 </div>
             {%endfor%}
         </div>
