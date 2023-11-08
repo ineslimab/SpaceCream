@@ -51,7 +51,7 @@ header{
     justify-content: center;
 }
 
-header img{
+header .logo{
     width: 20rem;
     height: 16rem;
     margin-top: 3.6rem;
@@ -61,6 +61,33 @@ header .title{
     margin: 3rem auto 3rem;
     width: 100%;
     text-align: center;
+
+    position: relative;
+}
+
+.icon-cesta{
+    position: absolute;
+    right: 20px;
+    top: 12px;
+}
+
+.icon-cesta a {
+    text-decoration: none;
+}
+
+.icon-cesta img{
+    width: 70px;
+    height: 70px;
+}
+
+.icon-cesta span{
+    font-size: medium;
+    text-decoration: none;
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    color: var(--c-p);
+    font-weight: bold;
 }
 
 header .title h1{
@@ -76,15 +103,16 @@ header .title h1{
     width: 100%;
 }
 
-main{
+
+main {
     margin: 0 auto;
     
     padding: 5.4rem 11.6rem;
 }
 
 main h2{
-    margin: auto 0rem 1rem;
-    text-align: center;
+margin: auto 0rem 1rem;
+text-align: center;
 }
 
 #vitrine{
@@ -107,7 +135,6 @@ main h2{
 
     animation: topdown 700ms;
 }
-
 
 .card h2{
     font-family: var(--ff-heading);
@@ -170,13 +197,6 @@ button.comprar{
     text-decoration: none;
 }
 
-button.comprar:hover{
-    cursor: pointer
-}
-
-.comprar .acao{
-    display: none;
-}
 @keyframes topdown {
     0%{
         opacity: 0;
@@ -198,3 +218,62 @@ button.comprar:hover{
         transform: rotateY(5px)}
 }
 
+.comprar .acao{
+    display: none;
+}
+
+#page-title{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.content{
+    font-family: var(--ff-heading);
+    font-size: 2rem;
+}
+
+.content section{
+    flex: 1;
+}
+
+section table{
+    width: 100%;
+    background: var(--bg-title);
+    border-collapse: collapse;
+}
+
+section table tr{
+    border-bottom: 1px solid var(--c-primary);
+}
+section table tr th{
+    text-align: left;
+    padding-bottom: 15px;
+}
+
+section table tr td{
+    font-family: var(--ff-texting);  
+}
+section table tr td img{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    display: inline;
+    vertical-align: middle;
+}
+
+section table tr td p{
+    display: inline;
+    vertical-align: middle;
+}
+
+.content aside{
+    min-width: 250px;
+    font-weight: bold;
+
+    margin-top: 10px;
+}
+
+.content aside span{
+    font-weight: normal;
+    font-family: var(--ff-texting);  
+}

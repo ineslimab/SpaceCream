@@ -16,6 +16,8 @@
     <title>Space Cream - Menu</title>
 
     <script>
+        const add_item_url = {{ url_for("add_item_carrinho")|tojson }}
+
         document.addEventListener("DOMContentLoaded", function(e) {
             const listaBotaoComprar = document.getElementsByClassName("comprar");
             
@@ -43,6 +45,27 @@
                     },
                     false,
                 );
+
+                botaoComprar.addEventListener(
+                    "click",
+                    (event) => {
+                        console.log('click', event.target)
+                        console.log('click', event.target.dataset)
+                        let data = {
+                            "id": event.target.dataset.id,
+                            "qtd": event.target.dataset.qtd,
+                        }
+                        fetch(add_item_url, {
+                            "method": "POST",
+                            "headers": {"Content-Type": "application/json"},
+                            "body": JSON.stringify(data),
+                        }).then((result) => {
+                            alert("Produto adicionado ao carrinho!")
+                            location.replace(location.href)
+                        })
+                    },
+                    false,
+                );
             }
         });
     </script>
@@ -52,9 +75,15 @@
 <body>
     
     <header>
-        <img src="{{ url_for('static',filename='imgs/logo 1.png') }}" alt="Desenho de um círculo e dentro uma casquinha de sorvete com uma bola de cor lilás">
+        <img src="{{ url_for('static',filename='imgs/logo 1.png') }}" class="logo" alt="Desenho de um círculo e dentro uma casquinha de sorvete com uma bola de cor lilás" />
         <div class="title">
             <h1>Space cream</h1>
+            <span class="icon-cesta">
+                <a href={{ url_for('cesta_compras') }}>
+                    <img src="{{ url_for('static',filename='imgs/cesta.png') }}">
+                    <span>{{ qtd_carrinho }}</span>
+                </a>
+            </span>
         </div>
     </header>
 
@@ -68,9 +97,9 @@
                 <div class="card-sorvete">
                     <p class="titulo">{{sorvete.nome}}</p>
                     <img src = {{sorvete.url_img}}>
-                    <button class="comprar">
-                        <spam class="acao">Comprar</spam>
-                        <spam class="preco">R${{sorvete.preco}}</spam>
+                    <button class="comprar" data-id={{sorvete.id}} data-qtd="1">
+                        <span class="acao" data-id={{sorvete.id}} data-qtd="1">Comprar</span>
+                        <span class="preco">R${{sorvete.preco}}</span>
                     </button>
                 </div>
             {%endfor%}

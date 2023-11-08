@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+
+    <title>Cesta de compras</title>
+</head>
+<body>
+    <header>
+
+        <img src="{{ url_for('static',filename='imgs/logo 1.png') }}" class="logo" alt="Desenho de um círculo e dentro uma casquinha de sorvete com uma bola de cor lilás" />
+        <div class="title">
+            <h1>Space cream</h1>
+        </div>
+
+    </header>
+    
+    <main>
+        <p id="page-title">Sua Cesta</p>
+
+        <div class="content">
+            <section>
+                <table>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
+                      </tr>
+                      {%for item in carrinho %}
+                        <tr>
+                            <td><img src = {{item.img}}> <span>{{item.nome}}</span></td>
+                            <td>{{item.qtd}}</td>
+                            <td>R$ {{item.preco}}</td>
+                        </tr>
+                    {%endfor%}
+                </table>
+            </section>
+            <aside>Total: <span>R$ {{total}}</span></aside>
+            
+        </div>
+
+        
+
+    </main> 
+  
+</body>
+</html>

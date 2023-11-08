@@ -18,9 +18,15 @@
 </head>
 <body>
     <header>
-        <img src="{{ url_for('static',filename='imgs/logo 1.png') }}" alt="Desenho de um círculo e dentro uma casquinha de sorvete com uma bola de cor lilás">
+        <img src="{{ url_for('static',filename='imgs/logo 1.png') }}" class="logo" alt="Desenho de um círculo e dentro uma casquinha de sorvete com uma bola de cor lilás" />
         <div class="title">
             <h1>Space cream</h1>
+            <span class="icon-cesta">
+                <a href={{ url_for('cesta_compras') }}>
+                    <img src="{{ url_for('static',filename='imgs/cesta.png') }}">
+                    <span>{{ qtd_carrinho }}</span>
+                </a>
+            </span>
         </div>
     </header>
     <main>
