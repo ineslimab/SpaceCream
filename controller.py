@@ -28,5 +28,10 @@ def add_item_carrinho():
     carrinho = repository.add_item_carrinho(sorvete, data['qtd'])
     return jsonify(carrinho)
 
+@app.delete('/cesta/<sorvete_id>')
+def remove_item_carrinho(sorvete_id):
+    carrinho = repository.remove_item_carrinho(sorvete_id)
+    return jsonify(carrinho)
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -164,6 +164,10 @@ text-align: center;
     animation: downtop 200ms 200ms backwards;
 }
 
+#menu{
+    padding-bottom: 59.184px;
+}
+
 .row-sorvete{
     display: flex;
     flex-direction: row;
@@ -243,7 +247,7 @@ section table{
 }
 
 section table tr{
-    border-bottom: 1px solid var(--c-primary);
+    border-bottom: 3px solid var(--c-primary);
 }
 section table tr th{
     text-align: left;
@@ -261,6 +265,17 @@ section table tr td img{
     vertical-align: middle;
 }
 
+.acao {
+    text-align: center;
+}
+
+.remove-item{
+    max-width: 68px;
+    max-height: 45px;
+    width: auto;
+    height: auto;
+}
+
 section table tr td p{
     display: inline;
     vertical-align: middle;
@@ -276,4 +291,18 @@ section table tr td p{
 .content aside span{
     font-weight: normal;
     font-family: var(--ff-texting);  
+}
+
+.rodape{
+    padding: 30px;
+    background-color: var(--bg-primary);
+
+    text-align: center;
+    font-size:large;
+}
+
+.rodape a{
+    text-decoration: none;
+    color: var(--ff-texting);
+    text-shadow: #FC0 1px 0 10px;
 }

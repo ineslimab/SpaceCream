@@ -1,6 +1,7 @@
 import pymysql
 
 from config import mysql
+from config import app
 from flask import session
 import functools
 
@@ -52,6 +53,25 @@ def get_carrinho():
         qtd_total = functools.reduce(lambda a, b: a+b, sub)
 
     return (session['carrinho'], total, qtd_total)
+
+def remove_item_carrinho(sorvete_id):
+    if 'carrinho' not in session:
+        session['carrinho'] = []
+    carrinho = session['carrinho']
+
+    index = None 
+    for idx in range(len(carrinho)):
+        if(int(carrinho[idx]['id']) == int(sorvete_id)):
+            index = idx
+            break
+
+    if index is not None:
+        del carrinho[index]
+
+    session['carrinho'] = carrinho
+
+    return session['carrinho']
+    
 
 
 def execute(sql, parameters, callback):

@@ -13,6 +13,34 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
 
     <title>Cesta de compras</title>
+
+    <script>
+
+        const remove_item_url = {{ url_for("remove_item_carrinho", sorvete_id="replace_param")|tojson }}
+
+        document.addEventListener("DOMContentLoaded", function(e) {
+            const listaBotaoRemoverItem = document.getElementsByClassName("remove-item");
+            
+            for (let i = 0; i < listaBotaoRemoverItem.length; i++) {
+                const botaRemover = listaBotaoRemoverItem[i]
+
+                botaRemover.addEventListener(
+                    "click",
+                    (event) => {
+                        url = remove_item_url.replaceAll('replace_param', event.target.dataset.id)
+                        fetch(url, {
+                            "method": "DELETE"
+                        }).then((result) => {
+                            alert("Produto removido do carrinho!")
+                            console.log(result)
+                            location.replace(location.href)
+                        })
+                    },
+                    false
+                );
+            }
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -34,12 +62,16 @@
                         <th>Produto</th>
                         <th>Quantidade</th>
                         <th>Preço</th>
+                        <th class="acao">Remover do carrinho</th>
                       </tr>
                       {%for item in carrinho %}
                         <tr>
                             <td><img src = {{item.img}}> <span>{{item.nome}}</span></td>
                             <td>{{item.qtd}}</td>
                             <td>R$ {{item.preco}}</td>
+                            <td class="acao">
+                                <img class="remove-item" src="{{ url_for('static',filename='imgs/remover do carrinho.webp') }}" width="50px" data-id="{{item.id}}" />
+                            </td>
                         </tr>
                     {%endfor%}
                 </table>
@@ -50,7 +82,11 @@
 
         
 
-    </main> 
+    </main>
+
+    <footer class="rodape">
+        fale conosco no instagram <a href="https://www.instagram.com/spacecreamm" target="_blank">@spacecreamm</a>
+    </footer>
   
 </body>
 </html>
